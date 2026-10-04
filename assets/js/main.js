@@ -1,7 +1,3 @@
-/**
- * Progressive enhancement for the primary navigation and image carousel.
- * Controls keep visible, Spanish labels so people can operate them by voice.
- */
 const menuButton = document.querySelector(".menu-toggle");
 const menu = document.querySelector("#menu");
 const carousel = document.querySelector(".carousel");
@@ -60,13 +56,9 @@ if (carousel && slides && dots.length) {
 }
 
 const heroImages = [...document.querySelectorAll(".hero-image")];
-const heroToggle = document.querySelector(".hero-toggle");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (heroImages.length && heroToggle) {
+if (heroImages.length) {
   let activeHeroImage = 0;
-  let heroTimer;
-  let isPaused = reducedMotion.matches;
 
   const showHeroImage = (index) => {
     activeHeroImage = (index + heroImages.length) % heroImages.length;
@@ -75,31 +67,7 @@ if (heroImages.length && heroToggle) {
     });
   };
 
-  const stopRotation = () => window.clearInterval(heroTimer);
-  const startRotation = () => {
-    stopRotation();
-    if (!isPaused) heroTimer = window.setInterval(() => showHeroImage(activeHeroImage + 1), 3000);
-  };
-
-  const updateToggle = () => {
-    heroToggle.setAttribute("aria-pressed", String(isPaused));
-    heroToggle.textContent = isPaused ? "Reanudar imágenes" : "Pausar imágenes";
-  };
-
-  heroToggle.addEventListener("click", () => {
-    isPaused = !isPaused;
-    updateToggle();
-    startRotation();
-  });
-
-  reducedMotion.addEventListener("change", ({ matches }) => {
-    isPaused = matches;
-    updateToggle();
-    startRotation();
-  });
-
-  updateToggle();
-  startRotation();
+  window.setInterval(() => showHeroImage(activeHeroImage + 1), 3000);
 }
 
 document.querySelector("#year").textContent = new Date().getFullYear();
