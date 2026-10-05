@@ -221,7 +221,6 @@
     border-radius: 50%;
   }
   .lede {
-    max-width: 57ch;
     color: var(--muted);
     font-size: clamp(1.05rem, 1.8vw, 1.28rem);
   }
@@ -444,7 +443,6 @@
     color: var(--blue-sky);
   }
   .statement p {
-    max-width: 55ch;
     color: #edf3ef;
     font-size: 1.25rem;
   }
