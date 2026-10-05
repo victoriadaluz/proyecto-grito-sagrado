@@ -464,6 +464,9 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+  .card:not(:has(.cooperative-logo)) > .card-tag {
+    margin-bottom: 1rem;
+  }
   .card h3 {
     margin-block: 0.65rem 0.8rem;
     font-size: 2rem;
