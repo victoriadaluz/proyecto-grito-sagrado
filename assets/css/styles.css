@@ -156,6 +156,9 @@
     align-items: end;
     margin-bottom: 2.8rem;
   }
+  .work .section-heading h2 {
+    font-size: clamp(2.25rem, 3.9vw, 3.5rem);
+  }
   .intro-grid,
   .statement-grid,
   .cta-grid {
