@@ -509,6 +509,7 @@
     position: relative;
     flex: 0 0 100%;
     height: clamp(360px, 53vw, 570px);
+    margin: 0;
   }
   .slide img {
     width: 100%;
@@ -708,6 +709,22 @@
     }
     .cards {
       grid-template-columns: minmax(0, 1fr);
+    }
+    .slide {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+    .slide img {
+      height: clamp(14rem, 74vw, 18rem);
+      background: var(--ink);
+      object-fit: contain;
+    }
+    .slide figcaption {
+      position: static;
+      padding: 1rem;
+      background: var(--ink);
+      font-size: 0.95rem;
     }
     .card {
       min-height: 265px;
