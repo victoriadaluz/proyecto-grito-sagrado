@@ -476,12 +476,12 @@
     color: var(--muted);
   }
   .card--feature {
-    color: #fff;
-    background: var(--green);
-    border-color: var(--green);
+    color: var(--ink);
+    background: var(--paper);
+    border-color: var(--line);
   }
   .card--feature :is(.card-tag, p) {
-    color: #d8f3ff;
+    color: var(--muted);
   }
   .cooperative-logo {
     display: block;
@@ -711,6 +711,10 @@
     }
     .card {
       min-height: 265px;
+    }
+    .cooperative-logo {
+      width: min(12rem, 100%);
+      height: 12rem;
     }
     .footer-grid {
       grid-template-columns: 1fr;
