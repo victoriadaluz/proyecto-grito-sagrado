@@ -743,6 +743,12 @@
       font-size: 0.95rem;
       line-height: 1.3;
     }
+    .carousel-navigation .control,
+    .dot {
+      width: 2.25rem;
+      height: 2.25rem;
+      flex-basis: 2.25rem;
+    }
     .card {
       min-height: 265px;
     }
