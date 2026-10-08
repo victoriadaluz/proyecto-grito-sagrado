@@ -55,6 +55,38 @@ if (carousel && slides && dots.length) {
   });
 }
 
+const historyCarousel = document.querySelector(".intro-art");
+const historyFigures = historyCarousel
+  ? [...historyCarousel.querySelectorAll(".history-slide")]
+  : [];
+
+if (historyCarousel && historyFigures.length > 1) {
+  let activeHistorySlide = 0;
+
+  window.setInterval(() => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const isPaused =
+      historyCarousel.matches(":hover") ||
+      historyCarousel.matches(":focus-within") ||
+      document.hidden;
+
+    if (reduceMotion || isPaused) return;
+
+    const currentFigure = historyFigures[activeHistorySlide];
+    currentFigure.classList.add("is-leaving");
+    currentFigure.setAttribute("aria-hidden", "true");
+
+    activeHistorySlide = (activeHistorySlide + 1) % historyFigures.length;
+    const nextFigure = historyFigures[activeHistorySlide];
+    nextFigure.classList.remove("is-leaving");
+    nextFigure.setAttribute("aria-hidden", "false");
+
+    window.setTimeout(() => currentFigure.classList.remove("is-leaving"), 200);
+  }, 5000);
+}
+
 const heroImages = [...document.querySelectorAll(".hero-image")];
 
 if (heroImages.length) {
