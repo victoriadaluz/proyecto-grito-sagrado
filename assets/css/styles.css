@@ -95,7 +95,7 @@
     text-wrap: balance;
   }
   h1 {
-    max-width: 10ch;
+    max-width: 14ch;
     margin-bottom: 1.35rem;
     font-size: clamp(3.15rem, 7vw, 6.6rem);
   }
@@ -158,7 +158,7 @@
   }
   .cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
   }
   .impact-grid {
@@ -256,9 +256,9 @@
     text-decoration: none;
   }
   .brand-mark {
-    width: auto;
-    height: 4.2rem;
-    max-width: min(12rem, 44vw);
+    width: min(9rem, 35vw);
+    height: auto;
+    max-width: 100%;
     object-fit: contain;
   }
   .nav-links {
@@ -428,6 +428,7 @@
   .card {
     display: flex;
     flex-direction: column;
+    min-width: 0;
     min-height: 325px;
     padding: 2rem;
     background: var(--paper);
@@ -459,13 +460,12 @@
     color: #d8f3ff;
   }
   .cooperative-logo {
-    display: grid;
+    display: block;
     width: min(15rem, 100%);
     height: auto;
-    margin: 0.8rem 0 1rem;
+    margin: 0.8rem auto 1rem;
     object-fit: contain;
-    object-position: left;
-    align-items: center;
+    object-position: center;
   }
   .gallery {
     background: #e6f2f8;
@@ -604,8 +604,9 @@
     background: #082f49;
   }
   .footer-grid {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     gap: 1rem;
     font-size: 0.88rem;
   }
@@ -647,7 +648,7 @@
       padding-top: 7.5rem;
     }
     .brand-mark {
-      height: 3.5rem;
+      width: min(7rem, 35vw);
     }
     .hero-grid,
     .intro-grid,
@@ -660,13 +661,17 @@
       min-height: 525px;
       gap: 1rem;
     }
+    h1 {
+      max-width: 10ch;
+    }
     .impact-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .impact-item {
       min-height: 100px;
       padding: 1.15rem;
       border-bottom: 1px solid rgb(20 37 31 / 22%);
+      min-width: 0;
     }
     .impact-item:nth-child(2) {
       border-right: 0;
@@ -678,13 +683,21 @@
       grid-template-columns: 1fr;
     }
     .cards {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
     }
     .card {
       min-height: 265px;
     }
     .footer-grid {
-      flex-direction: column;
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 380px) {
+    .impact-grid {
+      grid-template-columns: 1fr;
+    }
+    .impact-item {
+      border-right: 0;
     }
   }
 }
